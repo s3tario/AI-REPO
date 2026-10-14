@@ -131,7 +131,7 @@
   .portrait { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; background: var(--tone); }
   .about-photos { display: none; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
   .about-photos.has { display: grid; }
-  .about-photos img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+  .about-photos img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; background: var(--tone); }
   .about-copy p + p { margin-top: 1.1em; }
   .about-extra { margin-top: 48px; display: grid; gap: 28px; }
   .about-extra h3 { margin-bottom: 12px; }
@@ -160,8 +160,8 @@
   .proj.open .proj-panel { grid-template-rows: 1fr; }
   .proj.open .proj-panel > div { visibility: visible; transition-delay: 0s; }
   .proj-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 32px; padding: 0 40px 40px; }
-  .proj-body img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 20px; }
-  .proj-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; }
+  .proj-body img { width: 100%; height: auto; margin-bottom: 20px; background: var(--tone); }
+  .proj-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; align-content: start; }
   .proj-meta h4 { font-size: 15px; font-weight: 600; color: var(--accent-ink); margin-bottom: 4px; }
   .proj-meta p { font-size: 17px; }
 
@@ -298,7 +298,7 @@
         <div data-reveal>
           <img class="portrait" src="assets/portrait.jpg" alt="Portrait of Nathan Setaro" width="800" height="800" loading="lazy">
           <!-- Drop about-1/2/3 (.jpg, .webp or .png) into assets/ and they appear here. -->
-          <div class="about-photos" id="about-photos" data-photos="about-1,about-2,about-3"></div>
+          <div class="about-photos" id="about-photos" data-photos="about-1,about-2,about-3" data-alts="Nathan mid-jump in a Boston volleyball jersey|Nathan standing at the water's edge at dusk|Nathan in cap and gown at graduation"></div>
         </div>
         <div>
           <div class="about-copy lead" data-reveal>
@@ -523,32 +523,36 @@
     })();
   }
   var aboutPhotos = document.getElementById('about-photos');
-  aboutPhotos.getAttribute('data-photos').split(',').forEach(function (name) {
+  var alts = aboutPhotos.getAttribute('data-alts').split('|');
+  aboutPhotos.getAttribute('data-photos').split(',').forEach(function (name, i) {
+    /* keep the order of the files, whichever loads first */
+    var slot = document.createElement('div');
+    aboutPhotos.appendChild(slot);
     tryImage('assets/' + name, function (im) {
-      im.alt = ''; im.loading = 'lazy';
-      aboutPhotos.appendChild(im);
+      im.alt = alts[i] || ''; im.loading = 'lazy';
+      slot.replaceWith(im);
       aboutPhotos.classList.add('has');
     });
   });
 
   /* ---------- projects ---------- */
   var projects = [
-    { t: 'Self-Hosted Personal AI Assistant', s: 'A private AI assistant on my own server hardware.', img: 'proj-ai',
+    { t: 'Self-Hosted Personal AI Assistant', s: 'A private AI assistant on my own server hardware.', img: 'proj-ai', alt: 'Self-hosted AI assistant',
       body: 'Model hosting, networking, storage and access, owned end to end. No cloud dependency, no subscription, no one else’s terms.',
       role: 'Architect and administrator, from hardware to interface.',
       gained: 'Model serving trade-offs, secure remote access, real uptime responsibility.',
       tools: 'Ubuntu, Docker, Tailscale', cats: 'Infrastructure, AI' },
-    { t: 'Glucose Detection Pacifier', s: 'A non-invasive glucose monitoring concept for infants.', img: 'proj-pacifier',
+    { t: 'Glucose Detection Pacifier', s: 'A non-invasive glucose monitoring concept for infants.', img: 'proj-pacifier', alt: 'Glucose detection pacifier work: the Binky Buddy CAD model in Onshape, prototyping at the bench, a sensor test on a breadboard and two concept sketches',
       body: 'Infant glucose monitoring in developing countries relies on invasive blood draws. The concept: a pacifier that samples saliva passively, designed for low-cost manufacture. Presented at the MedHigh closing showcase.',
       role: 'Student researcher: gap research, CAD modeling, final presentation.',
       gained: 'Design research method, presenting technical work to a real audience.',
       tools: 'Onshape', cats: 'Medical, CAD, research' },
-    { t: 'Self-Hosted Cloud', s: 'A private alternative to Drive and iCloud, on hardware I own.', img: 'proj-cloud',
+    { t: 'Self-Hosted Cloud', s: 'A private alternative to Drive and iCloud, on hardware I own.', img: 'proj-cloud', alt: 'Self-hosted cloud',
       body: 'File sync, media and backups reachable from anywhere without handing data to a third party. Hardware selection, service configuration, secure remote access and ongoing maintenance.',
       role: 'Builder and maintainer.',
       gained: 'Storage architecture, security hardening, living with my own decisions.',
       tools: 'Nextcloud, Docker, Cloudflare', cats: 'Infrastructure' },
-    { t: 'Network-Attached Storage', s: 'NAS design and deployment: RAID, backups, remote access.', img: 'proj-nas',
+    { t: 'Network-Attached Storage', s: 'NAS design and deployment: RAID, backups, remote access.', img: 'proj-nas', alt: 'Network-attached storage build',
       body: 'RAID planning for redundancy, an automated backup strategy and secure remote access. Built to survive a drive failure without losing a byte.',
       role: 'Designer and installer.',
       gained: 'RAID and redundancy planning, backup automation, hardware selection.',
@@ -562,14 +566,14 @@
       '</button>' +
       '<div class="proj-panel" id="proj-' + i + '" role="region" aria-labelledby="proj-btn-' + i + '"><div>' +
         '<div class="proj-body">' +
-          '<div data-img="' + p.img + '"><p>' + p.body + '</p></div>' +
+          '<div data-img="' + p.img + '" data-alt="' + p.alt + '"><p>' + p.body + '</p></div>' +
           '<div class="proj-meta">' + meta('My role', p.role) + meta('What I gained', p.gained) + meta('Tools used', p.tools) + meta('Categories', p.cats) + '</div>' +
         '</div>' +
       '</div></div></div>';
   }).join('');
   list.querySelectorAll('.proj').forEach(function (el) { el.classList.add('in'); });
   list.querySelectorAll('[data-img]').forEach(function (host) {
-    tryImage('assets/' + host.getAttribute('data-img'), function (im) { im.alt = ''; host.insertBefore(im, host.firstChild); });
+    tryImage('assets/' + host.getAttribute('data-img'), function (im) { im.alt = host.getAttribute('data-alt'); im.loading = 'lazy'; host.insertBefore(im, host.firstChild); });
   });
   list.addEventListener('click', function (e) {
     var btn = e.target.closest('button[aria-expanded]');
