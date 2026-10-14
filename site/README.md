@@ -1,51 +1,55 @@
-# nathansetaro.com
+# nathansetaro.com — static site
 
-Plain HTML, CSS and JavaScript. No build step, no dependencies, no server code.
-Open `index.html` directly, or upload the whole `site/` folder to any static host
-(GitHub Pages, Netlify, Cloudflare Pages, Vercel, cPanel/FTP, nginx).
+Plain HTML/CSS/JS. No build step, no dependencies, no server code. Open
+`index.html` directly or upload the whole folder to any host — Netlify, Vercel,
+GitHub Pages, Cloudflare Pages, cPanel/FTP, S3, or a Raspberry Pi running nginx.
 
-Every path is relative, so the folder works at a domain root or in a subfolder.
-Keep filenames lowercase; some hosts are case-sensitive.
+Every path in the site is **relative**, so the folder works at a domain root
+(`nathansetaro.com/`) or in a subfolder (`user.github.io/portfolio/`) with no
+edits. Keep the folder's internal structure intact and keep filenames lowercase —
+some hosts are case-sensitive.
 
 ```
-index.html          Landing page
-resume.html         Resume page (image preview + PDF download)
-.htaccess           Caching and MIME types for Apache hosts (ignored elsewhere)
-.nojekyll           Tells GitHub Pages to serve files as-is
-assets/
-  fonts/            Newsreader and Instrument Sans, self-hosted (no Google Fonts call)
-  lotus-dots.js     Dot data for the hero lotus
-  portrait.jpg      About photo
-  about-1..3.webp   Small photos under the portrait
-  proj-*.webp       Project images
-  resume.pdf/.png   Resume download and on-page preview
-  nds-mark.png, anaeio-wordmark.png, anaeio-lotus.png   Logos
+index.html            Landing page
+resume.html           Resume page
+lotus-mark-dots.js    Dot data for the hero constellation
+assets/               Photos, logos, resume image + PDF
+logos/                Brand marks for the tool chips
 ```
 
-## Adding photos
+## Filling the empty image spots
 
-Drop a file with a matching name into `assets/` and it appears; no code change.
-`.webp`, `.jpg`, `.jpeg` and `.png` all work. A missing file shows nothing (no
-placeholder box).
+Drop a file with the matching name into `assets/` and it appears automatically —
+no code change. Any of `.webp`, `.jpg`, `.jpeg`, `.png` works; a spot with no
+file stays hidden (a project with no image shows its text full width).
 
-| File name | Where it shows |
+| Name | Where it shows |
 |---|---|
-| `about-1`, `about-2`, `about-3` | Under the portrait in About (shown 2:3, portrait shape) |
-| `proj-ai` | Self-Hosted Personal AI Assistant (open the project row) |
-| `proj-pacifier` | Glucose Detection Pacifier |
-| `proj-cloud` | Self-Hosted Cloud |
-| `proj-nas` | Network-Attached Storage |
+| `assets/about-1` … `about-3` | Three squares under the About photo — **already filled** |
+| `assets/proj-ai` | Self-Hosted Personal AI Assistant |
+| `assets/proj-pacifier` | Glucose Detection Pacifier — **filled** |
+| `assets/proj-cloud` | Self-Hosted Cloud |
+| `assets/proj-nas` | Network-Attached Storage |
 
-Photos at least 1200px wide look sharp; WebP at quality ~80 keeps them small.
+Organization logos work the same way in `logos/` — add a transparent PNG named
+after the slot and it replaces the monogram:
+`logo-nationalgrid`, `logo-machado`, `logo-mlsc`, `logo-wpi`, `logo-wths`,
+`logo-auburn`, `logo-anaeio` (**filled**), `logo-medhigh`, `logo-redcross`, `logo-comptia`.
+
+Transparent marks sit on a themed disc: `logo-anaeio` gets teal in light mode,
+`logo-auburn` gets white, and both go near-black in dark mode.
+
+Tool chips without a brand mark accept `logos/<name>.png` too — e.g.
+`canva.png`, `onshape.png`, `adobe-express.png`, `microsoft-word.png`.
 
 ## Updating the resume
 
-Replace both `assets/resume.pdf` (the download) and `assets/resume.png` (the
-preview). If the PNG changes size, update its `width`/`height` in `resume.html`.
+Replace both `assets/resume.pdf` (download button) and `assets/resume.png`
+(the on-page preview image).
 
 ## Notes
 
-- Light/dark choice is kept in `sessionStorage` under `nds-theme`: each new visit
-  opens light, and the choice carries between both pages for that session.
-- Motion (the lotus, tickers, reveals) stops for visitors who set
-  "reduce motion" in their system settings.
+- Light/dark choice lives in `sessionStorage` under `nds-theme`: every fresh
+  visit opens in light mode, and the choice carries between both pages for the
+  rest of that session.
+- Fonts load from Google Fonts, so the type falls back to system sans/serif offline.
