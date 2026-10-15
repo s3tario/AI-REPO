@@ -1,0 +1,3 @@
+/* aero.css — the "coastal" look. Every rule here is scoped to html.look-aero,
+   so the classic look is untouched unless the look is switched on
+   (visit any page with ?look=aero; ?look=classic switches back). */
