@@ -11,9 +11,12 @@ some hosts are case-sensitive.
 
 ```
 index.html            Landing page
-resume.html           Resume page
+resume.html           Resume page (the resume as real text; also the source of the PDF)
+fluid.css / fluid.js  Motion layer shared by both pages: smooth scroll, page
+                      transitions, springy buttons, staggered reveals
+vendor/lenis.min.js   Smooth-scroll library (Lenis 1.1.20, MIT)
 lotus-mark-dots.js    Dot data for the hero constellation
-assets/               Photos, logos, resume image + PDF
+assets/               Photos, logos, resume PDF
 logos/                Brand marks for the tool chips
 ```
 
@@ -44,8 +47,16 @@ Tool chips without a brand mark accept `logos/<name>.png` too — e.g.
 
 ## Updating the resume
 
-Replace both `assets/resume.pdf` (download button) and `assets/resume.png`
-(the on-page preview image).
+The resume lives as text in `resume.html`. Edit it there, then make a new PDF
+from that same page so the two always match:
+
+1. Open `resume.html` in Chrome.
+2. Print (Ctrl/Cmd + P) → Destination **Save as PDF**, Paper **Letter**,
+   Margins **None**, turn **Headers and footers** off.
+3. Save it over `assets/resume.pdf`.
+
+The print stylesheet in `resume.html` lays it out as a one-page US Letter sheet in
+Times New Roman; the site's nav, colours and buttons are left out automatically.
 
 ## Notes
 
@@ -53,3 +64,5 @@ Replace both `assets/resume.pdf` (download button) and `assets/resume.png`
   visit opens in light mode, and the choice carries between both pages for the
   rest of that session.
 - Fonts load from Google Fonts, so the type falls back to system sans/serif offline.
+- Visitors who turn on "reduce motion" in their system settings get a still
+  version: no smooth scroll, spinning rings, tickers or page transitions.

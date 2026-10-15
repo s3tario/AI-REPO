@@ -121,7 +121,6 @@
   @media (max-width: 900px) {
     nav { padding: 14px 66px 14px 20px !important; }
     #theme-toggle { top: 14px !important; right: 16px !important; }
-    section, header { padding-left: 22px !important; padding-right: 22px !important; }
     .g2, .g57, .g3col { grid-template-columns: 1fr !important; gap: 32px !important; }
     .exp-row { grid-template-columns: 1fr !important; gap: 10px !important; }
     .proj-row { grid-template-columns: 1fr auto !important; }
@@ -139,6 +138,7 @@
     #row-companies, #row-tools { animation: none !important; }
   }
 </style>
+<link rel="stylesheet" href="fluid.css">
 <script src="lotus-mark-dots.js"></script>
   <script>try{if(sessionStorage.getItem("nds-theme")==="dark")document.documentElement.classList.add("dark");}catch(e){}</script>
 </head>
@@ -210,13 +210,13 @@
   </section>
 
   <!-- About -->
-  <section id="about" style="padding: 120px 48px 140px; position: relative; overflow: hidden;">
+  <section id="about" style="padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 48px) clamp(84px, 10.5vw, 140px); position: relative; overflow: hidden;">
     <div style="max-width: 1160px; margin: 0 auto; position: relative;">
-      <div data-reveal style="display: flex; align-items: center; gap: 24px; margin-bottom: 64px;">
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: 44px; letter-spacing: -0.02em;">About</h2>
+      <div data-reveal style="display: flex; align-items: center; gap: 24px; margin-bottom: clamp(36px, 5vw, 64px);">
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(34px, 2.2vw + 18px, 44px); letter-spacing: -0.02em;">About</h2>
         <div style="flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent);"></div>
       </div>
-      <div class="g57" style="display: grid; grid-template-columns: 5fr 7fr; gap: 52px; align-items: start; padding: 44px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); position: relative; border: 1px solid transparent; box-shadow: var(--glass-shadow);"><span aria-hidden="true" style="position: absolute; inset: -1px; border-radius: 27px; padding: 1.5px; pointer-events: none; background: conic-gradient(from var(--ledAngle), transparent 0%, transparent 26%, color-mix(in srgb, var(--fr1) 26%, transparent) 40%, color-mix(in srgb, var(--sm2) 58%, transparent) 50%, var(--f6) 56.5%, color-mix(in srgb, #ffffff 80%, var(--f6)) 58%, transparent 59.5%, transparent 100%), linear-gradient(135deg, color-mix(in srgb, var(--f6) 20%, transparent), color-mix(in srgb, var(--sm2) 16%, transparent) 40%, color-mix(in srgb, var(--fr1) 20%, transparent) 70%, color-mix(in srgb, var(--f7) 22%, transparent)); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor; animation: ledSpin 5.5s linear infinite;"></span>
+      <div class="g57" style="display: grid; grid-template-columns: 5fr 7fr; gap: clamp(28px, 4vw, 52px); align-items: start; padding: clamp(20px, 3.6vw, 44px); border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); position: relative; border: 1px solid transparent; box-shadow: var(--glass-shadow);"><span aria-hidden="true" style="position: absolute; inset: -1px; border-radius: 27px; padding: 1.5px; pointer-events: none; background: conic-gradient(from var(--ledAngle), transparent 0%, transparent 26%, color-mix(in srgb, var(--fr1) 26%, transparent) 40%, color-mix(in srgb, var(--sm2) 58%, transparent) 50%, var(--f6) 56.5%, color-mix(in srgb, #ffffff 80%, var(--f6)) 58%, transparent 59.5%, transparent 100%), linear-gradient(135deg, color-mix(in srgb, var(--f6) 20%, transparent), color-mix(in srgb, var(--sm2) 16%, transparent) 40%, color-mix(in srgb, var(--fr1) 20%, transparent) 70%, color-mix(in srgb, var(--f7) 22%, transparent)); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor; animation: ledSpin 5.5s linear infinite;"></span>
         <div data-reveal style="display: flex; flex-direction: column; gap: 14px;">
           <img src="assets/nate-professional.png" alt="Portrait of Nathan Setaro" loading="lazy" style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 6px;">
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
@@ -256,13 +256,13 @@
   </section>
 
   <!-- Experience -->
-  <section id="experience" style="position: relative; padding: 120px 48px 140px; background: var(--bg); overflow: hidden;">
+  <section id="experience" style="position: relative; padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 48px) clamp(84px, 10.5vw, 140px); background: var(--bg); overflow: hidden;">
     <div style="max-width: 1160px; margin: 0 auto; position: relative;">
       <div data-reveal style="display: flex; align-items: baseline; gap: 24px; margin-bottom: 40px;">
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: 44px; letter-spacing: -0.02em;">Experience</h2>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(34px, 2.2vw + 18px, 44px); letter-spacing: -0.02em;">Experience</h2>
         <div style="flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent);"></div>
       </div>
-      <div style="padding: 8px 44px 20px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);">
+      <div style="padding: 8px clamp(20px, 3.6vw, 44px) 20px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);">
         <div data-reveal class="exp-row" style="display: grid; grid-template-columns: 150px 1fr 2fr; gap: 24px; padding: 36px 0; border-bottom: 1px solid var(--line); align-items: start;">
           <p style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">Summer 2025</p>
           <div>
@@ -291,7 +291,7 @@
           <p style="font-size: 15px; color: var(--muted); line-height: 1.7;">Researched design gaps in medical devices for developing countries, then prototyped answers in Onshape — including a glucose-detecting pacifier concept.</p>
         </div>
         <div data-reveal class="exp-row" style="display: grid; grid-template-columns: 150px 1fr 2fr; gap: 24px; padding: 36px 0; align-items: start;">
-          <p style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">2022 – 2024</p>
+          <p style="font-size: 13px; color: var(--muted); letter-spacing: 0.04em;">2022 – 2026</p>
           <div>
             <h3 style="font-size: 17px; font-weight: 600; margin-bottom: 4px;">Worcester Technical High School</h3>
             <p style="font-size: 14px; color: var(--accent); margin-bottom: 8px;">Student IT Support Specialist</p>
@@ -304,21 +304,21 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" style="padding: 120px 48px 140px; position: relative; overflow: hidden;">
+  <section id="projects" style="padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 48px) clamp(84px, 10.5vw, 140px); position: relative; overflow: hidden;">
     <div style="max-width: 1160px; margin: 0 auto; position: relative;">
       <div data-reveal style="display: flex; align-items: baseline; gap: 24px; margin-bottom: 16px;">
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: 44px; letter-spacing: -0.02em;">Projects</h2>
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(34px, 2.2vw + 18px, 44px); letter-spacing: -0.02em;">Projects</h2>
         <div style="flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent);"></div>
       </div>
-      <p data-reveal style="font-size: 14px; color: var(--muted); margin-bottom: 64px;">Click any project to learn more.</p>
-      <div data-reveal id="projects-list" style="padding: 6px 40px 10px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);"></div>
+      <p data-reveal style="font-size: 14px; color: var(--muted); margin-bottom: clamp(36px, 5vw, 64px);">Click any project to learn more.</p>
+      <div data-reveal id="projects-list" style="padding: 6px clamp(18px, 3.3vw, 40px) 10px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);"></div>
     </div>
   </section>
 
   <!-- anaeio -->
-  <section id="anaeio" style="padding: 120px 48px 140px; background: var(--bg); position: relative; overflow: hidden;">
+  <section id="anaeio" style="padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 48px) clamp(84px, 10.5vw, 140px); background: var(--bg); position: relative; overflow: hidden;">
     <div style="max-width: 1160px; margin: 0 auto; position: relative;">
-      <div data-reveal class="g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; padding: 56px; border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); position: relative; border: 1px solid transparent; box-shadow: var(--glass-shadow);"><span aria-hidden="true" style="position: absolute; inset: -1px; border-radius: 27px; padding: 1.5px; pointer-events: none; opacity: 0.72; background: linear-gradient(135deg, var(--f6), var(--sm2) 26%, var(--fr1) 48%, var(--f4) 68%, var(--f7)); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor;"></span>
+      <div data-reveal class="g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5.5vw, 72px); align-items: center; padding: clamp(24px, 4.6vw, 56px); border-radius: 26px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); position: relative; border: 1px solid transparent; box-shadow: var(--glass-shadow);"><span aria-hidden="true" style="position: absolute; inset: -1px; border-radius: 27px; padding: 1.5px; pointer-events: none; opacity: 0.72; background: linear-gradient(135deg, var(--f6), var(--sm2) 26%, var(--fr1) 48%, var(--f4) 68%, var(--f7)); mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude; -webkit-mask-composite: xor;"></span>
         <div>
           <img src="assets/anaeio-text-transparent.png" alt="anaeio" class="logo-img" style="height: 56px; object-fit: contain; object-position: left; margin-bottom: 32px; display: block;">
           <p style="font-family: 'Newsreader', serif; font-size: 24px; line-height: 1.6; margin-bottom: 24px;">Every independent project I build is under: <span style="font-family: 'MuseoModerno', sans-serif; font-weight: 700; color: var(--ink);">anaeio</span>.</p>
@@ -333,13 +333,13 @@
   </section>
 
   <!-- Recognition -->
-  <section id="recognition" style="padding: 120px 48px 140px; position: relative; overflow: hidden;">
+  <section id="recognition" style="padding: clamp(72px, 9vw, 120px) clamp(20px, 4vw, 48px) clamp(84px, 10.5vw, 140px); position: relative; overflow: hidden;">
     <div style="max-width: 1160px; margin: 0 auto; position: relative;">
-      <div data-reveal style="display: flex; align-items: baseline; gap: 24px; margin-bottom: 64px;">
-        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: 44px; letter-spacing: -0.02em;">Recognition</h2>
+      <div data-reveal style="display: flex; align-items: baseline; gap: 24px; margin-bottom: clamp(36px, 5vw, 64px);">
+        <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(34px, 2.2vw + 18px, 44px); letter-spacing: -0.02em;">Recognition</h2>
         <div style="flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent);"></div>
       </div>
-      <div class="g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
+      <div class="g2" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px);">
         <div data-reveal>
           <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px;">Awards &amp; Honors</p>
           <div style="padding: 20px 0; border-bottom: 1px solid var(--line);">
@@ -367,7 +367,7 @@
         <div data-reveal>
           <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px;">Certifications</p>
           <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); gap: 16px;">
-            <h3 style="font-size: 16px; font-weight: 600;">CompTIA A+</h3><span style="font-size: 13px; color: var(--muted);">in progress</span>
+            <h3 style="font-size: 16px; font-weight: 600;">CompTIA A+</h3><span style="font-size: 13px; color: var(--muted);">2025</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); gap: 16px;">
             <h3 style="font-size: 16px; font-weight: 600;">CompTIA ITF+</h3><span style="font-size: 13px; color: var(--muted);">2023</span>
@@ -384,7 +384,7 @@
   </section>
 
   <!-- Looking ahead -->
-  <section style="padding: 110px 48px; position: relative; overflow: hidden;">
+  <section style="padding: clamp(72px, 8.5vw, 110px) clamp(20px, 4vw, 48px); position: relative; overflow: hidden;">
     <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
       <span style="position: absolute; left: 14%; bottom: 10px; width: 6px; height: 6px; border-radius: 50%; background: radial-gradient(circle, var(--mote), transparent 68%); animation: mote 13s linear 0s infinite;"></span>
       <span style="position: absolute; left: 27%; bottom: -20px; width: 4px; height: 4px; border-radius: 50%; background: radial-gradient(circle, var(--mote-2), transparent 68%); animation: mote 16s linear 3.4s infinite;"></span>
@@ -403,9 +403,9 @@
 
   <!-- Contact -->
   <section id="contact" style="background: var(--bg); position: relative; overflow: hidden;">
-    <div style="max-width: 1160px; margin: 0 auto; padding: 140px 48px; position: relative;">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(84px, 10.5vw, 140px) clamp(20px, 4vw, 48px); position: relative;">
       <div data-reveal style="max-width: 860px; margin: 0 auto; text-align: center;">
-        <div style="padding: 46px 44px 48px; border-radius: 28px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);">
+        <div style="padding: clamp(30px, 3.8vw, 46px) clamp(20px, 3.6vw, 44px) clamp(32px, 4vw, 48px); border-radius: 28px; background: var(--glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-brd); box-shadow: var(--glass-shadow);">
           <p style="font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.55; margin-bottom: 24px;">Contact Me</p>
           <h2 style="font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(44px, 6vw, 76px); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 24px;">Let's talk.</h2>
           <p style="font-size: 17px; opacity: 0.7; line-height: 1.75; margin: 0 auto; max-width: 46ch;">Currently seeking internships, research, and other opportunities.</p>
@@ -435,7 +435,7 @@
 
   <!-- Footer -->
   <footer style="background: var(--bg); border-top: 1px solid var(--line);">
-    <div style="max-width: 1160px; margin: 0 auto; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 36px clamp(20px, 4vw, 48px); display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
       <div style="display: flex; align-items: center; gap: 20px;">
         <img src="assets/nathan-wordmark-transparent.png" alt="Nathan D Setaro" loading="lazy" class="logo-img" style="height: 20px; width: auto;">
         <p style="font-size: 13px; color: var(--muted);">© 2026. Designed and built by hand.</p>
@@ -445,6 +445,8 @@
   </footer>
 </div>
 
+<script src="vendor/lenis.min.js"></script>
+<script src="fluid.js"></script>
 <script>
 (function () {
   var root = document.documentElement;
@@ -467,7 +469,7 @@
   tgl.addEventListener('click', function () {
     isDark = !isDark;
     try { sessionStorage.setItem('nds-theme', isDark ? 'dark' : 'light'); } catch (e) {}
-    syncTheme();
+    if (window.fluid) window.fluid.themeSwitch(tgl, syncTheme); else syncTheme();
   });
 
   /* ---------- nav: shrinks continuously down to the NDS mark ---------- */
@@ -556,7 +558,7 @@
   window.addEventListener('resize', measureNav);
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-top]'), function (a) {
-    a.addEventListener('click', function (e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    a.addEventListener('click', function (e) { e.preventDefault(); if (window.fluid) window.fluid.scrollTo(0); else window.scrollTo({ top: 0, behavior: 'smooth' }); });
   });
 
   /* ---------- reveal on scroll ---------- */
@@ -659,7 +661,12 @@
       body: 'RAID planning for redundancy, automated backup strategy, and secure remote access. Built to survive drive failure without losing a byte.',
       role: 'Designer and installer.',
       gained: 'RAID & redundancy planning, backup automation, hardware selection.',
-      tools: 'Ubuntu · Tailscale', cats: 'Systems · Networking' }
+      tools: 'Ubuntu · Tailscale', cats: 'Systems · Networking' },
+    { t: 'Self-Hosted Website & Server', s: 'A personal website on server infrastructure I manage.', img: 'proj-website',
+      body: 'Designed, built and maintain a personal website running on self-managed server infrastructure, from the server itself to the pages it serves.',
+      role: 'Designer, builder and maintainer.',
+      gained: 'Web hosting, server administration, keeping a public site online.',
+      tools: 'HTML · CSS · JavaScript', cats: 'Web · Infrastructure' }
   ];
   function meta(label, val) {
     return '<div><p style="font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">' + label +
