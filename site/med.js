@@ -1,49 +1,49 @@
-/* med.js — behaviour for the "coastal" look. Does nothing unless html.look-med is set.
-   Builds the hero water (caustic shimmer + sheen) and a few glossy bubbles, and pauses
-   them whenever the hero is off screen. Under reduced motion only the still water is built. */
+/* med.js — builds the hero scenery for the "Mediterranean" look. Does nothing unless
+   html.look-med is set, and nothing on the resume page (no #top: the look is pure CSS there).
+   Adds, under the lotus: the plunge pool (water, a still and a drifting light web, entry steps,
+   coping shadow) and the olive shade. The shade is built in dark too; CSS hides it there, and
+   switching to light replays its fade-in, like the sun coming out.
+   Pauses both moving layers whenever the hero is off screen. */
 (function () {
   var root = document.documentElement;
   if (!root.classList.contains('look-med')) return;
-  var hero = document.getElementById('top');
-  if (!hero) return;   /* resume page: the look is pure CSS there */
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function el(cls, parent) { var d = document.createElement('div'); d.className = cls; d.setAttribute('aria-hidden', 'true'); if (parent) parent.appendChild(d); return d; }
-
-  /* water below the horizon: two caustic layers on a tilted plane, plus a soft sheen */
-  var water = el('med-water');
-  var plane = el('med-water-plane', water);
-  el('med-caustic', plane);
-  el('med-caustic b', plane);
-  var sheen = el('med-sheen');
-  hero.insertBefore(sheen, hero.firstChild);
-  hero.insertBefore(water, hero.firstChild);
-  /* the horizon glint goes just before the name, so it shows through the glow behind the text */
-  hero.insertBefore(el('med-horizon'), hero.querySelector('#hero-text'));
-
-  /* bubbles: few, small, at the edges so they never cross the name */
-  if (!reduce) {
-    var wrap = el('med-bubbles');
-    var spots = [
-      { x: 5, s: 14, d: 24, w: 0, p: 0.55, sw: 16 },
-      { x: 9.5, s: 26, d: 31, w: 9, p: 0.5, sw: -12 },
-      { x: 15, s: 9, d: 20, w: 4, p: 0.6, sw: 10 },
-      { x: 84, s: 18, d: 27, w: 2, p: 0.55, sw: -14 },
-      { x: 90, s: 11, d: 22, w: 13, p: 0.6, sw: 12 },
-      { x: 95, s: 30, d: 35, w: 6, p: 0.42, sw: -18 },
-      { x: 77, s: 8, d: 19, w: 17, p: 0.6, sw: 8 }
-    ];
-    spots.forEach(function (b) {
-      var s = el('med-bubble', wrap);
-      s.style.cssText = 'left:' + b.x + '%;width:' + b.s + 'px;height:' + b.s + 'px;--dur:' + b.d + 's;--delay:-' + b.w + 's;--peak:' + b.p + ';--sway:' + b.sw + 'px';
+  /* warm the cache with both themes' textures once the page has loaded, so the first theme switch
+     (a 0.7s circle reveal) never shows flat colour while the stone and shade are still downloading */
+  addEventListener('load', function () {
+    ['stone-light', 'stone-dark', 'leaf-shade'].forEach(function (n) {
+      var i = new Image(); i.decoding = 'async'; i.src = 'assets/med/' + n + '.webp';
     });
-    hero.insertBefore(wrap, hero.querySelector('#hero-text'));
-  }
+  });
 
-  /* pause the moving water and bubbles while the hero is off screen */
+  var hero = document.getElementById('top');
+  if (!hero) return;
+
+  function el(cls, parent) { var d = document.createElement('div'); d.className = cls; if (parent) parent.appendChild(d); return d; }
+
+  /* olive shade: two patches of the same leaf texture */
+  var shade = el('med-shade');
+  shade.setAttribute('aria-hidden', 'true');
+  el('med-shade-a', shade);
+  el('med-shade-b', shade);
+
+  /* the pool: water, light web (still + drifting), steps above the web, coping shadow on top */
+  var pool = el('med-pool');
+  pool.setAttribute('aria-hidden', 'true');
+  var water = el('med-water', pool);
+  el('med-caustic still', water);
+  el('med-caustic drift', water);
+  el('med-steps', water);
+  el('med-rim', water);
+
+  /* bottom of the stack: pool first, the shade over it, then the classic glow, lotus and veil */
+  hero.insertBefore(shade, hero.firstChild);
+  hero.insertBefore(pool, hero.firstChild);
+
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
-      hero.classList.toggle('med-paused', !entries[0].isIntersecting);
+      /* a busy frame can deliver several entries at once: the newest one is the current state */
+      hero.classList.toggle('med-paused', !entries[entries.length - 1].isIntersecting);
     }).observe(hero);
   }
 })();
